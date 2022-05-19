@@ -1,0 +1,104 @@
+.chapter3{
+    position: absolute;
+    z-index: 500;
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 100%;
+    font-size: 1.3rem;
+
+
+    .texts{
+        margin-top: 5vw;
+    }
+
+    h2{
+        
+        display: flex;
+        justify-content: center;
+    }
+    p{
+        position: absolute;
+        width: 70%;
+        left: 16%;
+        line-height: 2rem;
+        
+    }
+
+    
+.container {
+    
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+    margin-top: 30vw;
+    
+	
+	
+	.loading-bar {
+		display: flex;
+		height: 15px;
+		width: 100%;
+		max-width: 320px;
+        border: solid 2px #ffffff;
+		box-shadow: inset 0px 0px 0px 1px #ffffff;
+		border-radius: 50px;
+		overflow: hidden;
+		
+		@keyframes progress-animation {
+			0% {width: 0%;}
+			20% {width: 10%;}
+			40% {width: 30%;}
+			50% {width: 60%;}
+			100% {width: 100%;}
+		}
+
+		.progress-bar {
+			display: flex;
+			height: 100%;
+			width: 100%;
+			background: #ffffff;
+			animation: progress-animation 7s ease-in-out;
+		}
+	}
+}
+}
+
+
+
+
+.img1{
+    z-index: 281;
+    position: absolute;
+
+}
+.img2{
+    z-index: 280;
+    position: absolute;
+}
+
+.player-chap3{
+    z-index: 290;
+    position: absolute;
+    background-color: black;
+}
+
+.skip-video{
+    position: absolute;
+    z-index: 1000;
+    background: transparent;
+    cursor: pointer;
+    left: 5%;
+    top: 5%;
+    color: white;
+
+    a{
+        background: transparent;
+        cursor: pointer;
+        color: white;
+        border: white 1px solid;
+        padding: 5px;
+        text-decoration: none;
+        font-size: 1.1rem;
+    }
+}

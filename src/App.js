@@ -1,5 +1,5 @@
 import { useState, useEffect, ImageBackground } from 'react';
-import {TypeWriter, Chapter1, Chapter2, Home} from './components/index';
+import {TypeWriter, Chapter1, Chapter2, Chapter3, Home} from './components/index';
 
 
 import {Route, Routes, BrowserRouter } from "react-router-dom";
@@ -21,7 +21,8 @@ function App() {
      <Routes> 
      <Route path="/" element={<Home />}/> 
      <Route path="/chap1" element={<Chapter1 />}/>  
-     <Route path="/chap2" element={<Chapter2 />}/>   
+      <Route path="/chap2" element={<Chapter2 />}/>   
+      <Route path="/chap3" element={<Chapter3 />}/>  
      </Routes>
   </BrowserRouter>
 

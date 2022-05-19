@@ -16,6 +16,9 @@ import next from '../../img/next.png'
 import phone from '../../img/cellphone.png'
 import unknownObject from '../../img/unknown-object.png'
 import hammer from '../../img/hache.png'
+import open from '../../img/open.png'
+
+
 
 function Chapter1() {
 
@@ -31,7 +34,7 @@ function Chapter1() {
 const [n, setN] = useState(0) // chap 2/3
 
 const [boyName, setBoyName] = useState('Chad'); // chap 2/3
-const [isLoading, setLoading] = useState(false);
+const [isLoading, setLoading] = useState(true);
 const [girlName, setGirlName] = useState('Kate'); // chap 2/3
 const [text, setText] = useState(`  We ran to get here but we won't be safe for long ${boyName} ! `)
 const [bagText, setBagtext] = useState(' ..(empty)..');
@@ -41,7 +44,9 @@ const [isPhoneFounded, setPhoneFounded] = useState(false); // chap 2/3
 const [isHammerFounded, setHammerFounded] = useState(false); // chap 2 
 const [chapterOneOver, setChapterOne] = useState(false);
 const [isGame2Open, setGame2Open ] = useState()
-const [text2, setText2] = useState('invalid sequence')
+const [text2, setText2] = useState('   invalid sequence')
+const [tryLeft, setTryLeft] = useState(5)
+const [time, setTime] = useState(30)
 
  const [isTwo, setTwo] = useState(false); const [isThree, setThree] = useState(false); const [isFour, setFour] = useState(false); const [isFive, setFive] = useState(false); const [isSix, setSix] = useState(false); const [isSeven, setSeven] = useState(false); const [isHeight, setHeight] = useState(false); const [isNine, setNine] = useState(false); const [isTen, setTen] = useState(false); const [isEleven, setEleven] = useState(false); const [isTwelve, setTwelve] = useState(false); const [isThirteen, setThirteen] = useState(false); const [isFourteen, setFourteen] = useState(false);  const [isFiveteen, setFiveteen] = useState(false);
 
@@ -49,7 +54,8 @@ const [text2, setText2] = useState('invalid sequence')
 
 useEffect(() => {
     
-    let timer1 = setTimeout(() => setLoading(false), 9000);
+    let timer1 = setTimeout(() => setLoading(false), 7000);
+    
 
     return () => {
       clearTimeout(timer1);
@@ -57,7 +63,7 @@ useEffect(() => {
 },[])
 
 function useWindowSize() {
-  // s/o https://www.youtube.com/watch?v=OHvJqOjToes for the tips ;)
+
   const [size, setSize] = useState([window.innerHeight, window.innerWidth]);
   useEffect(()=>{
     const handleResize = () => {
@@ -77,17 +83,26 @@ const [height, width] = useWindowSize();
 
 
 function handleClick() {
-  const arrText = ["  Yeah they are gonna break the door, there must be another way out", `  Look ${boyName} there is a backpag here, we should use it`,`  Okay perfect. There is a door here ...  Ahhhahg... It's looked, we have to find the key ...`, `  The key we found is not working ... I mean , we're in 2033 nobody use key anymore` , `  I think we can hack the door system, we just need a ... `, `  `]
+  const arrText = ["  Yeah they are gonna break the door, there must be another way out", `  Look ${boyName} there is a backpag here, we should use it`,`  Okay perfect. There is a door here ...  Ahhhahg... It's looked, we have to find the key ...`, `  It's not working ! there is no lock .... ` , `   Yeah we are in 2033, nobody use key anymore. We gotta find something else quick`, `  I think we gotta find something that can hack the door system ... `, `  Okay perfect the phone we found is working, let's try to get inside the door system `, `   ( CRIIIIICK ) Look Chad the window is broken and zombies are coming in we have to hurry ! `]
   setText(arrText[n])
   setN(n+1)
   if (n == 2) {
     setPause(true)
     setBagtext('You can drag items here')
   }
-  if (n ===4) {
-    //setPause(true);
+  if (n ==5 && isPhoneFounded == false) {
+    setPause(true);
    // setChapterOne(true);
   }
+
+  if (n == 7) {
+    setPause(true);
+
+       let timer2 = setInterval(() => setTime(time-1), 1000);
+
+   
+  }
+
 }
 
 function handleOnDragEnd(result) {
@@ -100,7 +115,9 @@ function handleOnDragEnd(result) {
     setHammerFounded(true); }
   
   if (result.destination.droppableId == 'items' && result.draggableId == 'thePhone') {
-    setPhoneFounded(true);}
+    setPhoneFounded(true);
+    setPause(false)
+  }
   
   if (result.destination.droppableId == 'items' && result.draggableId == 'theX') {
     setText('  Thats gross! put that thing down ...');}
@@ -109,6 +126,7 @@ function handleOnDragEnd(result) {
 console.log(n);
 
 function retry() {
+  setTryLeft(tryLeft-1)
   setTwo(false)
   setThree()
   setFour()
@@ -123,94 +141,92 @@ function retry() {
   setThirteen()
   setFourteen()
   setFiveteen()
-}
-
-function handleSystem(e) {
-  console.log(e);
+  
 }
 
 
 
 function handleError1() {
   setTwo(true);
-  setText2('Invalid sequence')
+  setText2('    Invalid sequence')
   setTimeout(() => {
     retry()
-  }, 2000);
+  }, 1700);
 
 }
 function handleError2() {
   setThree(true);
-  setText2('Invalid sequence')
+  setText2('   Invalid sequence')
   setTimeout(() => {
     retry()
-  }, 2000);
+  }, 1700);
 }
 function handleError3() {
   setFour(true);
-  setText2('Invalid sequence')
+  setText2('   Invalid sequence')
   setTimeout(() => {
     retry()
-  }, 2000);
+  }, 1700);
 }
 function handleError4() {
   setSix(true);
-    setText2('Invalid sequence')
+    setText2('    Invalid sequence')
 
   setTimeout(() => {
     retry()
-  }, 2000);
+  }, 1700);
 }
 function handleError5() {
   setSeven(true);
-    setText2('Invalid sequence')
+    setText2('      Invalid sequence')
 
   setTimeout(() => {
     retry()
-  }, 2000);
+  }, 1700);
 }
 function handleError6() {
   setHeight(true);
-    setText2('Invalid sequence')
+    setText2('     Invalid sequence')
 
   setTimeout(() => {
     retry()
-  }, 2000);
+  }, 1700);
 }
 function handleError7() {
   setEleven(true);
-    setText2('Invalid sequence')
+    setText2('  Invalid sequence')
 
   setTimeout(() => {
     retry()
-  }, 2000);
+  }, 1700);
 }
 function handleError8() {
   setTwelve(true);
-    setText2('Invalid sequence')
+    setText2('       Invalid sequence')
 
   setTimeout(() => {
     retry()
-  }, 2000);
+  }, 1700);
 }
 function handleError9() {
   setThirteen(true);
-    setText2('Invalid sequence')
+    setText2('        Invalid sequence')
 
   setTimeout(() => {
     retry()
-  }, 2000);
+  }, 1700);
 }
 
+console.log(time);
   return (
     <div className="App">
 
         <div className={`chapter1 ${isLoading? '' : 'invisible'} `}>
           <div className="texts">
-          <h2>Chapter 1 : The Store</h2>
+          <h2>Chapter 1 : Trapped</h2>
 
           <p>
-          <TypeWriter text={'   The door does not lead to the exit but to a strange place where a mysterious man stands behind...'} />
+          <TypeWriter text={'   Chad and Kate try to find a refuge. '} />
           </p>
           </div>
           <div className="container">
@@ -244,10 +260,8 @@ function handleError9() {
               </button>
             </div>
 
-            <div className={`${chapterOneOver? 'visible' : 'invisible'} `}>
-              <button>
-                <a href="/chap2"> get Out</a>
-              </button>
+            <div className={`${n>7? 'visible' : 'invisible'} `}>
+             <p>00:{time}</p>
           </div>           
         </div>
 
@@ -337,7 +351,7 @@ function handleError9() {
    </DragDropContext>
 
  <Draggable3 handle=".status-bar" >
-   <div className={`game-two ${n>5?'': 'invisible'}` }>
+   <div className={`game-two ${n>7?'': 'invisible'}` }>
   
         <div className="status-bar">
           <div className="window-name">Door System</div>
@@ -377,28 +391,22 @@ function handleError9() {
           <div onClick={()=> setFiveteen(true) }  className={`items ${isFiveteen? 'yes' :''} `}><p>☠️</p></div>
           <div className="items init"><p>B</p></div>
 
-      
-   
-         
           </div>
-<div className={` `}>
-Get out
-</div>
-{/* 
-<div>
-  Try left ...
-</div> */}
-       
+  
          
  <p> <TypeWriter text={text2} /> </p>
+ <p>{tryLeft} try left </p>
         </div>
 
         <div className='card-footer'>
-          <button>
-          verify
+          <div className={isFiveteen && isFourteen && isTen && isFive &&isNine && isFive ? '':'invisible'}>
+
+          
+          <button onClick={()=> window.location = '/chap2'}>
+          <img src={open} alt="op" />
           </button>
         </div>
-
+</div>
 
    </div>
 </Draggable3>

@@ -44,7 +44,7 @@ function Chapter2() {
   },[])
 
   function useWindowSize() {
-    // https://www.youtube.com/watch?v=OHvJqOjToes 
+  
     const [size, setSize] = useState([window.innerHeight, window.innerWidth]);
     useEffect(()=>{
       const handleResize = () => {
@@ -60,12 +60,13 @@ function Chapter2() {
   const [height, width] = useWindowSize();
 
   function handleClick() {
-    const arrText = [`  Hey ?! What is this place ?? Dammn it's huge`, `  Looks there is someone there, he looks creepy`, `  What are you doing  in my laboratory? Arrgh... I don't have the time for this`, ` I'm one calcul left to find the cure for Covid-27. if you can't help me you'll have to leave!`, `   Humm... Sorry but are you really a scientist? For how long have you been strugling with this?`, `  He his not listening anymore ... `, `   Tht's it! That really it!, the ultimate vacin for the covid-27! Follow me I'm gonna try it!`  ]
+    const arrText = [`  Hey ?! What is this place ?? Dammn it's huge`, `  Looks there is someone there, he looks creepy with the mask on his face...`, `  What are you doing  in my laboratory? Arrgh... I don't have the time for this`, `   Look, if you can't help me you'll have to leave, i don't have enought water`, `  Wait there are zombies outside! You need help for what?`, `  That's not your business for now ... Take this test, it's from the NASA. if you fail you get out `, `  Are you sure this is the test from the NASA? `, "   Yes 100%, I had to pass the same to be part of the part of the scientist team and search a cure for Alpha-3 variant", "   What? You're a Covid-19 scientist? I taught they were all dead?!?", "  Well, they did try to kill me... and din't completly fail since i'm a cyborg now", "   Wait what?? I thaught that was a mask! But who tried to kill you guys and why?", "  We don't have the time to speak now! Here look ... this his the last calcul that I need to solve to find the Covid-19 cure ..."  ]
     setText(arrText[n])
     setN(n+1)
-    if (n==3) {
+    if (n==5) {
       setPause(true)
     }
+
 
   }
 
@@ -86,8 +87,8 @@ function Chapter2() {
     const userValue = event.target.value;
 
      if (userValue == numberX*numberY) {
-       setSucceed(true)
-       setText("  You're smarter than I thought, come to my lab I could use your help")
+       
+       setText("  You Found it !! let's go to my lab NOW !")
        setPause(false)
      }
     
@@ -101,6 +102,13 @@ function handleFail() {
   setText("  NO NO NOOO wrong answer ... ! Get OUT !")
 }
 
+function handleFinal() {
+    setPause(false)
+    setSucceed(true)
+    setText('Well, well, well, ... Looks like we have 2 genuis here. 148 is very impressing')
+  
+}
+console.log(n);
 
 
   return (
@@ -160,63 +168,67 @@ function handleFail() {
 
 
         <Draggable2 handle=".status-bar"  >
-      <div  className={`guess-cards ${n >= 4? 'visible' : 'invisible'} `}>
+      <div  className={`guess-cards ${n >= 6 && n < 7? 'visible' : 'invisible'} `}>
         <div className="status-bar">
-          <div className="window-name">IQ Test</div>
+          <div className="window-name">NASA Test</div>
         </div>
         <div className="paper">
 
           <div className={`pre-text ${q1 == undefined ? 'visible':'invisible'} `}>
-          <h2> The mysterious man wants to test your ability</h2>
-          <h2>Press play to start ... </h2>
+          <h2>You need to score 140 IQ to pass this level</h2>
+          <h2>Press play when ready ... </h2>
           </div>
 
           <div className={`text-calcul ${q1 && q2 == undefined? 'visible':'invisible'} `}>
-                    <p>BlaBlaBla</p>
-                    
-                    <div>
-                      <button onClick={()=> setQ2(true)}>
-                        rep 1
-                      </button>
-                      <button>
-                        rep 2
-                      </button>
-                    </div>
-                    <button>
-                        rep 3
-                      </button>
+          <p>1/3 Waht was the skin color of Michael Jackson ?</p>
+                  
+                <button onClick={()=> setQ2(true)}>
+                  black
+                </button>
+                <button onClick={()=> setQ2(true)}>
+                  white
+                </button>
+              
+              <button onClick={()=> setQ2(true)}>
+                  grey
+                </button>
           </div>
 
           <div className={`text-calcul ${q2 && q3 == undefined? 'visible':'invisible'} `}>
-                  <p>Waht was the skin color of Michael Jackson ?</p>
-                  <div>
-                <button onClick={()=> setQ2(true)}>
+          <p>2/3 You are lost in the dessert and you take one item. What would it be ?</p>
+              
+                  <button onClick={()=> setQ3(true)}>
+                  A fishing pole
+                </button>
+                <button onClick={()=> setQ3(true)}>
+                  Big Couscous bag
+                </button>
+      
+              <button onClick={()=> setQ3(true)}>               
+                vegetable seed
+              </button>
+                  
+          </div>
+
+          <div className={`text-calcul ${q3 && isSucceed == false? 'visible':'invisible'} `}>
+                  <p>3/3 What was the skin color of Michael Jackson ?</p>
+
+                  <button onClick={()=> handleFinal()
+                   }>
                   black
                 </button>
-                <button>
+                <button onClick={()=> handleFinal()}>
                   white
                 </button>
-              </div>
-              <button>
+
+              <button onClick={()=>handleFinal()}>
                   grey
                 </button>
                   
           </div>
 
-          <div className={`text-calcul ${q3? 'visible':'invisible'} `}>
-                  <p>Waht was the skin color of Michael Jackson ?</p>
-                  <div>
-                <button onClick={()=> setQ2(true)}>
-                  black
-                </button>
-                <button>
-                  white
-                </button>
-              </div>
-              <button>
-                  grey
-                </button>
-                  
+          <div className={isSucceed? '':'invisible'} >
+              <h1>148 IQ</h1>
           </div>
               
         </div>
@@ -233,14 +245,14 @@ function handleFail() {
 
 
 <Draggable2 handle=".status-bar"  >
-      <div  className={`calcul-cards ${n >= 8? 'visible' : 'invisible'} `}>
+      <div  className={`calcul-cards ${n >= 12? 'visible' : 'invisible'} `}>
         <div className="status-bar">
           <div className="window-name">Peice of Paper</div>
         </div>
         <div className="paper">
 
           <div className={`pre-text ${numberX? 'invisible':'visible'} `}>
-          <h2> You will have 10 seconds to solve the calculation</h2>
+          <h2> You will have 20 seconds to solve the calculation</h2>
           <h2>Press play to start ... </h2>
           </div>
 
@@ -248,7 +260,7 @@ function handleFail() {
               <p>{numberX} x {numberY} </p>
               <p>=</p>
 
-              <input type="text" onChange={getInputValue} />
+              <input type="text" onChange={() => getInputValue()} />
               
               </div>
         </div>

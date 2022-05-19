@@ -16,20 +16,19 @@ function Home() {
 const [boyName, setBoyName] = useState('Chad'); // chap 2/3
 const [girlName, setGirlName] = useState('Kate'); // chap 2/3
 const [isOpen, setOpen] = useState(false)
-const [go, letsgo] = useState(false)
-const [inputName, setName] = useState('')
-const [playVideo, setPlayVideo] = useState()
 
-const getName = createContext
 
-let audio = new Audio("/audioHome.mp3")
+const [playVideo, setPlayVideo] = useState(false)
+
+
+let audio = new Audio("/home.mp3")
  
 useEffect(()=> {
-  audio.play();
+  //audio.play();
 }, [])
 
 function useWindowSize() {
-    // s/o https://www.youtube.com/watch?v=OHvJqOjToes for the tips ;)
+
     const [size, setSize] = useState([window.innerHeight, window.innerWidth]);
     useEffect(()=>{
       const handleResize = () => {
@@ -45,9 +44,12 @@ function useWindowSize() {
   
   const [height, width] = useWindowSize();
 
-  function handleClick() {
-    letsgo(true)
-  }
+
+
+  function handleStart() {
+    setPlayVideo(true)
+    audio.stop()
+  } 
 
   return (
     <div className='home'>
@@ -81,13 +83,15 @@ function useWindowSize() {
                     )}
 
           </motion.div> 
-         
+          
    <div className='go'>
-   <img src={press} alt="ps"  onClick={()=> handleClick()}/>
-      {/* <h2 onClick={()=> handleClick()}> PLAY</h2> */}
+   <img src={press} alt="ps"  onClick={()=> handleStart()}/>
+ {/*  <img src={press} alt="ps"  onClick={()=> handleClick()}/>
+       <h2 onClick={()=> handleClick()}> PLAY</h2> */}
   </div>   
 
-  <div className={`play-page ${go? 'visible' : ''} `}>
+
+  {/* <div className={`play-page ${go? 'visible' : ''} `}>
     <div className="wrap-play-page">
             <div className="info">
               <h1>NickName : </h1>
@@ -110,15 +114,30 @@ function useWindowSize() {
 
       </div>
 
-  </div>
+  </div> */}
 
+
+<div className={`skip-video ${playVideo? 'visible':'invisible'} `}>
+       <a href="/chap1"> skip</a>
+        
+       
+</div>
   <div className={`player ${playVideo? 'visible' : 'invisible'} `}>
         <ReactPlayer
           className='react-player'
           url='/2033.mp4'
           width={width}
-          height={height - 30}
-          controls={true}
+          height={height}
+          
+          playing={playVideo}
+          onReady={console.log('ready')}
+          onEnded={()=>{
+            if (playVideo) {
+              window.location = '/chap1'
+            }
+            
+          } }
+          
         />
       </div>
 
