@@ -96,8 +96,8 @@
 
 
  .guess-cards{
-	width: 24vw;
-	height: 30vw;
+	width: 26vw;
+	height: 35vw;
 	aspect-ratio: 2/1;
 	margin: 0 auto;
 	position: absolute;
@@ -162,14 +162,22 @@
 		background-color: #ffffff;
 		border: 2px solid #1e1e1e;
 		border-bottom: #0c0c0c;
-		font-size: 13px;
+
 		color: rgb(0, 0, 0);
+	
+		h1{
+			display: flex;
+			justify-content: center;
+			margin-top: 20%;
+			font-size: 2rem;
+		}
 
 		.pre-text{
 			
 			line-height: 1.5rem;
 			width: 80%;
 			margin-left: 1rem;
+			font-size: 0.7rem;
 
 			h2{
 				margin-top: 30px;
@@ -179,7 +187,24 @@
 
 		.text-calcul{
 			line-height: 2rem;
-			font-size: 25px;
+			font-size: 1rem;
+			button{
+				display: flex;
+				
+				margin-top: 1rem;
+				margin-left: 33%;
+				width: 33%;
+				padding: 0.8rem;
+				border: solid 1px black;
+				border-radius: 5%;
+				background-color: #1a1a1a;
+				color: white;
+				cursor: pointer;
+				line-height: 1.5rem;
+				font-size: 0.6rem;
+				align-items: center;
+				justify-content: center;
+			}
 			
 		p{
 		  display: flex;
@@ -225,7 +250,7 @@
 
 	.calcul-cards{
 		z-index: 400;
-		width: 24vw;
+		width: 40vw;
 		height: 30vw;
 		aspect-ratio: 2/1;
 		margin: 0 auto;
@@ -236,14 +261,14 @@
 	  
 		.status-bar{
 			z-index: 2;
-			background-color: #1e1e1e;
+			background-color: #ffffff;
 			width: 100%;
 			height: 20px;
 			position: absolute;
 			top: -20px;
 			left: 0px;
-			border-left: 2px solid #1e1e1e;
-			border-right: 2px solid #1e1e1e;
+			border-left: 2px solid #ffffff;
+			border-right: 2px solid #ffffff;
 			display: flex;
 			align-items: center;
 			//box-shadow: 7px 2px 4px 1px #000000;
@@ -261,7 +286,7 @@
 			.window-name{
 				font-size: 12px;
 				margin-left: 15px;
-				color: #ffffff;
+				color: #000000;
 			}
 			.close-btn{
 				width: 14px;
@@ -287,41 +312,55 @@
 			position: relative;
 			width: 100%;
 			height: 100%;
-			background-color: #ffffff;
-			border: 2px solid #1e1e1e;
-			border-bottom: #0c0c0c;
+			background-color: #121039;
+			border: 2px solid #ffffff;
+			
 			font-size: 13px;
-			color: rgb(0, 0, 0);
-	
-			.pre-text{
-				
-				line-height: 1.5rem;
-				width: 80%;
-				margin-left: 1rem;
-	
-				h2{
-					margin-top: 30px;
-				}
-			}
-	
+			color: rgb(255, 255, 255);
 	
 			.text-calcul{
-				line-height: 2rem;
-				font-size: 25px;
+
+			
+				img{
+					position: absolute;
+					left: 33%;
+					width: 33%;
+					top: 10%;
+				}
+			
 				
-			p{
-			  display: flex;
-			  justify-content: center;
-			  margin-left: 5px;
-			  
-			}
+		
 			input{
 				position: relative;
 				left: 33%;
 				width: 33%;
+				margin-top: 35%;
+				font-size: 0.8rem;
+				padding: 0.5rem 0;
+
 			}
-		}
-	
+
+			button{
+				position: absolute;
+				margin-top: 45%;
+				padding: 0.5rem;
+				color: #121039;
+				margin-left: 0%;
+				background-color: #ffffff;
+				cursor: pointer;
+			}
+			.red{
+				width: 33%;
+				p{
+					color: rgb(215, 0, 0);
+					position: absolute;
+					margin-left: 18%;
+					top: 68%;
+					width: 80%;
+				}
+			}
+		
+	}
 		
 		}
 	  }
@@ -333,3 +372,5 @@
 		z-index: 200;
 		top: 0;
 	}
+
+	

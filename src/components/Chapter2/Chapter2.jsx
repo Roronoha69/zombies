@@ -14,6 +14,7 @@ import subm from '../../img/submit.png'
 //import succesVideo from '../../img/video-succes.mp4'
 import succesVideo from '../../img/video-succes.gif' 
 import fail from '../../img/video-echec.gif'
+import fizer from '../../img/FIZER.png'
 
 
 function Chapter2() {
@@ -30,6 +31,10 @@ function Chapter2() {
   const [q1, setQ1] = useState();
   const [q3, setQ3] = useState();
   const [q2, setQ2] = useState();
+  const [invalid, setInvalid] = useState('')
+  const [passwordOk, setPasswordOk] = useState(false)
+  const [verify, setVerify] = useState(false)
+  const [tryLeft, settryleft] = useState(3)
 
   let audio = new Audio("/audiochap2.mp3")
 
@@ -60,42 +65,47 @@ function Chapter2() {
   const [height, width] = useWindowSize();
 
   function handleClick() {
-    const arrText = [`  Hey ?! What is this place ?? Dammn it's huge`, `  Looks there is someone there, he looks creepy with the mask on his face...`, `  What are you doing  in my laboratory? Arrgh... I don't have the time for this`, `   Look, if you can't help me you'll have to leave, i don't have enought water`, `  Wait there are zombies outside! You need help for what?`, `  That's not your business for now ... Take this test, it's from the NASA. if you fail you get out `, `  Are you sure this is the test from the NASA? `, "   Yes 100%, I had to pass the same to be part of the part of the scientist team and search a cure for Alpha-3 variant", "   What? You're a Covid-19 scientist? I taught they were all dead?!?", "  Well, they did try to kill me... and din't completly fail since i'm a cyborg now", "   Wait what?? I thaught that was a mask! But who tried to kill you guys and why?", "  We don't have the time to speak now! Here look ... this his the last calcul that I need to solve to find the Covid-19 cure ..."  ]
+    const arrText = [`  Hey ?! What is this place ?? Dammn it's huge`, `  Looks like there's someone there, he looks scary with the mask on his face...`, `  What are you doing  in my laboratory? Arrgh... I don't have the time for this`, `   If you can't help me you'll have to leave. I don't have enought water`, `  Wait there are zombies outside! You need help for what?`, `  That's not your business for now ... Take this test, it's from the NASA. if you fail you get out `, `  Are you sure this test is from the NASA? The questions are ... surprising`, "   I had to pass the same to be part of the part of the scientist team who searched a cure for Alpha-7 variant", "   What? You're a Covid-19 scientist? I taught they were all dead?!?", "   I survived by truning myself into a cyborg", "   Wait what?? I thaught that was a mask! But who tried to kill you guys and why?", "  It was Greta Thunberg and her army of environmental terrorists. They thought the last hope for the planet was to eradicate humanity.", " I'm still looking for the cure, but for that I need to access the Fizer Database to get more informations on the variant Alpha-7", "  The only hint I have is this, but i don't speak french and I don't have internet : 'DIEU ME DETESTE DONC JE N'AI NI BRAS NI JAMBES' ", "  Follow me I have to try something!"]
     setText(arrText[n])
     setN(n+1)
     if (n==5) {
       setPause(true)
     }
 
-
+    if (n==13) { 
+      setPause(true)
+      }
+      if (n==14) {
+        setPause(true)
+      }
   }
 
-
-  function handleQ(params) {
-    
-  }
-
-  function handleCalcul() {
-    setX(9)
-    var min=11; 
-    var max=19;  
-    setY(Math.floor(Math.random() * (max - min)) + min)
-  }
 
   const getInputValue = (event)=>{
-    // show the user input value to console
-    const userValue = event.target.value;
 
-     if (userValue == numberX*numberY) {
-       
-       setText("  You Found it !! let's go to my lab NOW !")
-       setPause(false)
+    const userValue = event.target.value;
+    const snake = 'snake' || 'Snake' || 'serpent' 
+
+     if (userValue == snake) {
+       setPasswordOk(true)
      }
     
     
 };
 
 
+function handleEnter() {
+  
+if (passwordOk == false) {  
+  
+    setInvalid(`  invalid password `)
+} else if (passwordOk == true){
+    setText("  Amazing you got it. Wait ... What is this language ? It's written in reptilian, Fizer are aliens ?!?")
+    setPause(false)
+    setVerify(true)
+}
+
+}
 
 function handleFail() {
   setFailed(true)
@@ -105,9 +115,10 @@ function handleFail() {
 function handleFinal() {
     setPause(false)
     setSucceed(true)
-    setText('Well, well, well, ... Looks like we have 2 genuis here. 148 is very impressing')
+    setText('   Well, well, well, ... Looks like we have 2 genuis here. 148IQ is very impressing')
   
 }
+console.log('#####################################');
 console.log(n);
 
 
@@ -135,15 +146,15 @@ console.log(n);
       <div className='text'>
           <div className='wrap-text'>
 
-           <div className={`girlImage ${n == 2 || n ==6 ? 'visible' : 'invisible'}`}>
+           <div className={`girlImage ${n == 2 || n == 7 || n ==11? 'visible' : 'invisible'}`}>
                 <img src={girl} alt="g" />
             </div>
              
-            <div className={`mistImage ${n ==0 || n == 3 || n == 4 || n== 7 ? 'visible' : 'invisible'}`}>
+            <div className={`mistImage ${n ==0 || n == 3 || n == 4 || n== 6 || n==8 || n==10 || n > 11? 'visible' : 'invisible'}`}>
                 <img src={myst} alt="m" />
             </div>
 
-            <div className={`boyImage ${n == 1 || n == 5 ? 'visible' :'invisible'}`} >
+            <div className={`boyImage ${n == 1 || n == 5 || n == 9 ? 'visible' :'invisible'}`} >
               <img src={boy} alt="b" />
             </div>
           
@@ -156,6 +167,14 @@ console.log(n);
               <button onClick={ () => handleClick()}>
                 <img src={next} alt="next" />
               </button>
+            </div>
+
+            <div  className={`the-next ${n==15? 'visible':'invisible'} `}>
+              <a href="/chap3">
+              <button onClick={ () => handleClick()}>
+                <img src={next} alt="next" />
+              </button>
+              </a>
             </div>
 
             {/* <div className={`${chapterOneOver? 'visible' : 'invisible'} `}>
@@ -183,31 +202,31 @@ console.log(n);
           <p>1/3 Waht was the skin color of Michael Jackson ?</p>
                   
                 <button onClick={()=> setQ2(true)}>
-                  black
+                👋🏾  black
                 </button>
                 <button onClick={()=> setQ2(true)}>
-                  white
+                👋🏻  white
                 </button>
               
               <button onClick={()=> setQ2(true)}>
-                  grey
+              👤 grey
                 </button>
           </div>
 
           <div className={`text-calcul ${q2 && q3 == undefined? 'visible':'invisible'} `}>
-          <p>2/3 You are lost in the dessert and you take one item. What would it be ?</p>
+          <p>2/3 You are lost in the dessert and you can take one item. What would it be ?</p>
               
                   <button onClick={()=> setQ3(true)}>
-                  A fishing pole
+                  🎣 Fishing pole
                 </button>
                 <button onClick={()=> setQ3(true)}>
-                  Big Couscous bag
+                  Couscous
                 </button>
       
               <button onClick={()=> setQ3(true)}>               
-                vegetable seed
+              🌱 Seeds
               </button>
-                  
+               
           </div>
 
           <div className={`text-calcul ${q3 && isSucceed == false? 'visible':'invisible'} `}>
@@ -245,26 +264,44 @@ console.log(n);
 
 
 <Draggable2 handle=".status-bar"  >
-      <div  className={`calcul-cards ${n >= 12? 'visible' : 'invisible'} `}>
+      <div  className={`calcul-cards ${n >= 13? 'visible' : 'invisible'} `}>
         <div className="status-bar">
-          <div className="window-name">Peice of Paper</div>
+        <div className="close-btn">X</div>
+          <div className="window-name">Fizer Website</div>
         </div>
         <div className="paper">
 
-          <div className={`pre-text ${numberX? 'invisible':'visible'} `}>
-          <h2> You will have 20 seconds to solve the calculation</h2>
-          <h2>Press play to start ... </h2>
-          </div>
+           <div className={`text-calcul ${verify? 'invisible' : ''} `}> 
+             
+             <img src={fizer} alt="f" />
 
-          <div className={`text-calcul ${numberX? 'visible':'invisible'} `}>
-              <p>{numberX} x {numberY} </p>
-              <p>=</p>
+            <input type="text" placeholder='password' onChange={(e) => getInputValue(e)} />
+            <button onClick={() => handleEnter()}>
+              Enter
+            </button>
 
-              <input type="text" onChange={() => getInputValue()} />
-              
-              </div>
+                   <div className='red'>
+            <p>
+            <TypeWriter text={invalid} />
+            </p>
+                  </div>
+               </div> 
+
+               <div className={`${verify? '':'invisible'} `}>
+                 <h2>Sssss,</h2>
+                 <p>SssSsSSssss SSs SssS sSSs s sssss ss SSsS sS</p>
+                 <p>SsSSssSSssSs sssSSSs s</p>
+                 <p>SssS sSsSs SSSSs s</p>
+                 <p>SsSSssSSSs s</p>
+                 <p>SsssS ssSs sSSsSSSs s</p>
+                 <p>SSSssssSSSsSS s</p>
+                 <p>ssSSS sSsSS sss SSs s</p>
+
+           
+
+               </div>
         </div>
-       
+{/*        
         <div className='card-footer'>
         <div className={numberX? 'invisible' :'visible'}>
         <button onClick={()=> handleCalcul()}>
@@ -276,9 +313,31 @@ console.log(n);
         <img src={subm} alt="s" />
         </button>
         </div>
-        </div>
+        </div> */}
+
       </div>
     </Draggable2>
+
+    {/* <Draggable2 handle=".status-bar"  >
+      <div  className={`guess-cards ${n > 13? 'visible' : 'invisible'} `}>
+        <div className="status-bar">
+          <div className="window-name">hint</div>
+        </div>
+        <div className="paper">
+
+          <div className={`pre-text ${n<8 ? 'visible':'invisible'} `}>
+          <h2>Password hint from ex collegue</h2>
+          <h2>Press play when ready ... </h2>
+          </div>
+
+
+
+         
+        </div>
+
+      
+      </div>
+    </Draggable2> */}
 
     <div className={`videoContainer  `}>
         

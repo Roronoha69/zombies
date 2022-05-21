@@ -75,9 +75,9 @@ function useWindowSize() {
               animate={{opacity:1}}
               transition={{duration: 1}}
                className='expand'>
-               <h3>On this scenario game, you will only need to use the click and the drag from the mouse</h3>
-               <h3>For the Web3 functionality you will need need <a href="http://" target="_blank" rel="noopener noreferrer">Meatamask</a> set up to the the <a href="http://" target="_blank" rel="noopener noreferrer">Ropsten Test Network</a> and finally get some <a href="http://" target="_blank" rel="noopener noreferrer">test rETH</a>.  (You will be able to skip this part)</h3>
-                <p>All the real ETH sent will be lost. Please use Ropsten.</p>
+               <h3>On this scenario game, you will need to use the click and the drag from the mouse</h3>
+               <h3>For the Chapter 3 you will need the arrow on the keyboard</h3>
+              
 
               </motion.div> 
                     )}
@@ -125,7 +125,7 @@ function useWindowSize() {
   <div className={`player ${playVideo? 'visible' : 'invisible'} `}>
         <ReactPlayer
           className='react-player'
-          url='/2033.mp4'
+          url='/2033-txt2.mp4'
           width={width}
           height={height}
           

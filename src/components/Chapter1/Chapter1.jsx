@@ -28,6 +28,7 @@ function Chapter1() {
   
   useEffect(()=> {
     audio.play()
+
   }, [])
         
  
@@ -98,9 +99,9 @@ function handleClick() {
   if (n == 7) {
     setPause(true);
 
-       let timer2 = setInterval(() => setTime(time-1), 1000);
-
-   
+    for (let i = 0; i < 31; i++) {
+      setTimeout(() => setTime(30-i), 1000 *i)
+    }
   }
 
 }
@@ -260,7 +261,7 @@ console.log(time);
               </button>
             </div>
 
-            <div className={`${n>7? 'visible' : 'invisible'} `}>
+            <div className={`timer ${n>7? 'visible' : 'invisible'} `}>
              <p>00:{time}</p>
           </div>           
         </div>

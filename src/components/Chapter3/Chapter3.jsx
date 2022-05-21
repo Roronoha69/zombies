@@ -84,9 +84,7 @@ function Chapter3() {
      
   return (
     <div>
-        
-        
-        
+
 
         <div className={`chapter3 ${isLoading? '' : 'invisible'} `}>
           <div className="texts">
