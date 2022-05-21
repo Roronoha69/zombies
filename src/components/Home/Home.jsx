@@ -1,23 +1,16 @@
 import React from 'react'
 import bgH from '../../img/homeBg.png'
-import { useState, useEffect, createContext } from 'react';
+import { useState, useEffect } from 'react';
 import './Home.scss'
 import logo from '../../img/logo.png'
 import { motion } from "framer-motion"
-import Draggable2 from 'react-draggable';
-import play from '../../img/play1.png'
 import press from '../../img/pressStart.gif'
 import ReactPlayer from 'react-player'
 
 
 function Home() {
 
-
-const [boyName, setBoyName] = useState('Chad'); // chap 2/3
-const [girlName, setGirlName] = useState('Kate'); // chap 2/3
 const [isOpen, setOpen] = useState(false)
-
-
 const [playVideo, setPlayVideo] = useState(false)
 
 

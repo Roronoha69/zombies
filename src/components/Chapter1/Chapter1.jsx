@@ -36,15 +36,13 @@ const [n, setN] = useState(0) // chap 2/3
 
 const [boyName, setBoyName] = useState('Chad'); // chap 2/3
 const [isLoading, setLoading] = useState(true);
-const [girlName, setGirlName] = useState('Kate'); // chap 2/3
+
 const [text, setText] = useState(`  We ran to get here but we won't be safe for long ${boyName} ! `)
 const [bagText, setBagtext] = useState(' ..(empty)..');
 const [isPaused, setPause] = useState();
 const [isKeyFounded, setKeyFounded] = useState(false); 
 const [isPhoneFounded, setPhoneFounded] = useState(false); // chap 2/3
 const [isHammerFounded, setHammerFounded] = useState(false); // chap 2 
-const [chapterOneOver, setChapterOne] = useState(false);
-const [isGame2Open, setGame2Open ] = useState()
 const [text2, setText2] = useState('   invalid sequence')
 const [tryLeft, setTryLeft] = useState(5)
 const [time, setTime] = useState(30)
@@ -87,16 +85,16 @@ function handleClick() {
   const arrText = ["  Yeah they are gonna break the door, there must be another way out", `  Look ${boyName} there is a backpag here, we should use it`,`  Okay perfect. There is a door here ...  Ahhhahg... It's looked, we have to find the key ...`, `  It's not working ! there is no lock .... ` , `   Yeah we are in 2033, nobody use key anymore. We gotta find something else quick`, `  I think we gotta find something that can hack the door system ... `, `  Okay perfect the phone we found is working, let's try to get inside the door system `, `   ( CRIIIIICK ) Look Chad the window is broken and zombies are coming in we have to hurry ! `]
   setText(arrText[n])
   setN(n+1)
-  if (n == 2) {
+  if (n === 2) {
     setPause(true)
     setBagtext('You can drag items here')
   }
-  if (n ==5 && isPhoneFounded == false) {
+  if (n ===5 && isPhoneFounded === false) {
     setPause(true);
    // setChapterOne(true);
   }
 
-  if (n == 7) {
+  if (n === 7) {
     setPause(true);
 
     for (let i = 0; i < 31; i++) {
@@ -108,7 +106,7 @@ function handleClick() {
 
 function handleOnDragEnd(result) {
 
-  if (result.destination.droppableId == 'items' && result.draggableId == 'theKey' && n > 2 == true) {
+  if (result.destination.droppableId === 'items' && result.draggableId == 'theKey' && n > 2 == true) {
     setKeyFounded(true);
     setPause(false);}  
   

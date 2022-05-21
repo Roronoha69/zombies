@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import './Chapter2.scss'
-import Typewriter from 'typewriter-effect';
 import {TypeWriter} from '../index';
 import Draggable2 from 'react-draggable';
 
@@ -10,8 +9,7 @@ import girl from '../../img/girl.png'
 import next from '../../img/next2.png'
 import myst from '../../img/mysteriousMan.png'
 import play from '../../img/play.png'
-import subm from '../../img/submit.png'
-//import succesVideo from '../../img/video-succes.mp4'
+
 import succesVideo from '../../img/video-succes.gif' 
 import fail from '../../img/video-echec.gif'
 import fizer from '../../img/FIZER.png'
@@ -23,18 +21,15 @@ function Chapter2() {
   const [text, setText] = useState(`  Aaarhg... Aaaarrrhg...! AAAAAARRHHG!! My calcul are wrong! `)
   const [isPaused, setPause] = useState();
   const [n, setN] = useState(0) 
-  const [numberX, setX] =useState();
-  const [numberY, setY] = useState()
   const [isSucceed, setSucceed] = useState(false)
   const [isFailed, setFailed] = useState(false)
-  const [isPlaying, setPlayQuizz] = useState()
   const [q1, setQ1] = useState();
   const [q3, setQ3] = useState();
   const [q2, setQ2] = useState();
   const [invalid, setInvalid] = useState('')
   const [passwordOk, setPasswordOk] = useState(false)
   const [verify, setVerify] = useState(false)
-  const [tryLeft, settryleft] = useState(3)
+
 
   let audio = new Audio("/audiochap2.mp3")
 
@@ -118,8 +113,6 @@ function handleFinal() {
     setText('   Well, well, well, ... Looks like we have 2 genuis here. 148IQ is very impressing')
   
 }
-console.log('#####################################');
-console.log(n);
 
 
   return (

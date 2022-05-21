@@ -1,5 +1,5 @@
-import { useState, useEffect, ImageBackground } from 'react';
-import {TypeWriter, Chapter1, Chapter2, Chapter3, Home} from './components/index';
+import React from 'react';
+import { Chapter1, Chapter2, Chapter3, Home} from './components/index';
 
 
 import {Route, Routes, BrowserRouter } from "react-router-dom";
