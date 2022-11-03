@@ -17,7 +17,7 @@ import fizer from '../../img/FIZER.png'
 
 function Chapter2() {
 
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState(true)
   const [text, setText] = useState(`  Aaarhg... Aaaarrrhg...! AAAAAARRHHG!! My calcul are wrong! `)
   const [isPaused, setPause] = useState();
   const [n, setN] = useState(0) 
@@ -29,13 +29,13 @@ function Chapter2() {
   const [invalid, setInvalid] = useState('')
   const [passwordOk, setPasswordOk] = useState(false)
   const [verify, setVerify] = useState(false)
-
+const [test, setTest] = useState('0')
 
   let audio = new Audio("/audiochap2.mp3")
 
   useEffect(() => {
     
-      let timer1 = setTimeout(() => setLoading(false), 8400);
+      let timer1 = setTimeout(() => setLoading(false), 6000);
       audio.play();
       
       return () => {
@@ -60,7 +60,7 @@ function Chapter2() {
   const [height, width] = useWindowSize();
 
   function handleClick() {
-    const arrText = [`  Hey ?! What is this place ?? Dammn it's huge`, `  Looks like there's someone there, he looks scary with the mask on his face...`, `  What are you doing  in my laboratory? Arrgh... I don't have the time for this`, `   If you can't help me you'll have to leave. I don't have enought water`, `  Wait there are zombies outside! You need help for what?`, `  That's not your business for now ... Take this test, it's from the NASA. if you fail you get out `, `  Are you sure this test is from the NASA? The questions are ... surprising`, "   I had to pass the same to be part of the part of the scientist team who searched a cure for Alpha-7 variant", "   What? You're a Covid-19 scientist? I taught they were all dead?!?", "   I survived by truning myself into a cyborg", "   Wait what?? I thaught that was a mask! But who tried to kill you guys and why?", "  It was Greta Thunberg and her army of environmental terrorists. They thought the last hope for the planet was to eradicate humanity.", " I'm still looking for the cure, but for that I need to access the Fizer Database to get more informations on the variant Alpha-7", "  The only hint I have is this, but i don't speak french and I don't have internet : 'DIEU ME DETESTE DONC JE N'AI NI BRAS NI JAMBES' ", "  Follow me I have to try something!"]
+    const arrText = [`  Hey ?! What is this place ?? Dammn it's huge.`, `  There is someone there, he looks scary ...`, `  What are you doing in my laboratory? Arrgh... I don't have the time for this`, `   If you can't help me you'll have to leave. I don't have enought water`, `  Wait there are zombies outside! You need help for what?`, `  First I need to know if you can even help. Take this test, it's from the NASA. if you fail you get out. `, `  Are you sure this test is from the NASA? The questions are ... surprising`, "   I had to pass the same to be part of the part of the scientist team who searched a cure for Alpha-7 variant", "   What? You're a Covid-19 scientist? I taught they were all dead?!?", "   I survived by truning myself into a cyborg", "   Wait what?? I thaught that was a mask! But who tried to kill you guys and why?", "  It was Greta Thunberg... She thought the last hope for the planet was to eradicate humanity.", "    Now, I need to access the Fizer Database help find this problem", "  [ I am an animal with no arms and no legs but I can poison you ]  ", "  Follow me I have to try something!"]
     setText(arrText[n])
     setN(n+1)
     if (n==5) {
@@ -79,7 +79,7 @@ function Chapter2() {
   const getInputValue = (event)=>{
 
     const userValue = event.target.value;
-    const snake = 'snake' || 'Snake' || 'serpent' 
+    const snake = 'snake'
 
      if (userValue == snake) {
        setPasswordOk(true)
@@ -107,6 +107,18 @@ function handleFail() {
   setText("  NO NO NOOO wrong answer ... ! Get OUT !")
 }
 
+function handleQcm(TestAnswer) {
+  
+  if (TestAnswer = 1) {
+    setFailed(true)
+    setText("  NO NO NOOO wrong answer ... ! Get OUT !")
+  } else {
+
+  }
+
+  
+}
+
 function handleFinal() {
     setPause(false)
     setSucceed(true)
@@ -125,7 +137,7 @@ function handleFinal() {
           <p>
           <TypeWriter text={'   The door does not lead to the exit but to a strange place where a mysterious man stands behind...'} />
           </p>
-          <p>Just10</p>
+          
           </div>
           <div className="container">
 	          <div className="loading-bar">
@@ -191,53 +203,54 @@ function handleFinal() {
           <h2>Press play when ready ... </h2>
           </div>
 
-          <div className={`text-calcul ${q1 && q2 == undefined? 'visible':'invisible'} `}>
-          <p>1/3 Waht was the skin color of Michael Jackson ?</p>
+          <div className={`text-calcul ${test == '0' && q1 && q2 == undefined? 'visible':'invisible'} `}>
+          <p>1/3 I can be found in a fishing boat or in the middle of a tennis court. </p>
+          <p>Who am I ?</p>
                   
-                <button onClick={()=> setQ2(true)}>
-                👋🏾  black
+                <button onClick={()=> handleFail()}>
+                  The referee
                 </button>
-                <button onClick={()=> setQ2(true)}>
-                👋🏻  white
+                <button onClick={()=> handleFail()}>
+                  A fish
                 </button>
               
-              <button onClick={()=> setQ2(true)}>
-              👤 grey
+              <button onClick={()=>  setTest('1')}>
+                A net
                 </button>
           </div>
 
-          <div className={`text-calcul ${q2 && q3 == undefined? 'visible':'invisible'} `}>
-          <p>2/3 You are lost in the dessert and you can take one item. What would it be ?</p>
+          <div className={`text-calcul ${test == '1' ? 'visible':'invisible'} `}>
+          <p>2/3 I can't walk, yet I have a back and four feet.</p>
+          <p>Who am I ?</p>
+                  
+                <button onClick={()=> handleFail()}>
+                  A Snake
+                </button>
+                <button onClick={()=>  setTest('2')}>
+                  A Chair
+                </button>
               
-                  <button onClick={()=> setQ3(true)}>
-                  🎣 Fishing pole
+              <button onClick={()=>  handleFail()}>
+                A Book
                 </button>
-                <button onClick={()=> setQ3(true)}>
-                  Couscous
-                </button>
-      
-              <button onClick={()=> setQ3(true)}>               
-              🌱 Seeds
-              </button>
-               
           </div>
 
-          <div className={`text-calcul ${q3 && isSucceed == false? 'visible':'invisible'} `}>
-                  <p>3/3 What was the skin color of Michael Jackson ?</p>
-
-                  <button onClick={()=> handleFinal()
-                   }>
-                  black
-                </button>
+          <div className={`text-calcul ${test == '2' ? 'visible':'invisible'} `}>
+          <p>3/3 Waht was the skin color of Michael Jackson ?</p>
+                  
                 <button onClick={()=> handleFinal()}>
-                  white
+                  BLACK
                 </button>
-
-              <button onClick={()=>handleFinal()}>
-                  grey
+                <button onClick={()=>  handleFinal()}>
+                  WHITE
                 </button>
-                  
+              
+              <button onClick={()=>  handleFinal()}>
+                GREY
+                </button>
           </div>
+
+          
 
           <div className={isSucceed? '':'invisible'} >
               <h1>148 IQ</h1>
@@ -257,7 +270,7 @@ function handleFinal() {
 
 
 <Draggable2 handle=".status-bar"  >
-      <div  className={`calcul-cards ${n >= 13? 'visible' : 'invisible'} `}>
+      <div  className={`calcul-cards ${n >= 14? 'visible' : 'invisible'} `}>
         <div className="status-bar">
         <div className="close-btn">X</div>
           <div className="window-name">Fizer Website</div>

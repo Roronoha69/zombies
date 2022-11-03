@@ -22,14 +22,6 @@ import open from '../../img/open.png'
 
 function Chapter1() {
 
-  let audio = new Audio("/audiochap1.mp3")
- 
-
-  
-  useEffect(()=> {
-    audio.play()
-
-  }, [])
         
  
 const [n, setN] = useState(0) // chap 2/3
@@ -45,15 +37,18 @@ const [isPhoneFounded, setPhoneFounded] = useState(false); // chap 2/3
 const [isHammerFounded, setHammerFounded] = useState(false); // chap 2 
 const [text2, setText2] = useState('   invalid sequence')
 const [tryLeft, setTryLeft] = useState(5)
-const [time, setTime] = useState(30)
+const [ttime, setTime] = useState(30)
 
  const [isTwo, setTwo] = useState(false); const [isThree, setThree] = useState(false); const [isFour, setFour] = useState(false); const [isFive, setFive] = useState(false); const [isSix, setSix] = useState(false); const [isSeven, setSeven] = useState(false); const [isHeight, setHeight] = useState(false); const [isNine, setNine] = useState(false); const [isTen, setTen] = useState(false); const [isEleven, setEleven] = useState(false); const [isTwelve, setTwelve] = useState(false); const [isThirteen, setThirteen] = useState(false); const [isFourteen, setFourteen] = useState(false);  const [isFiveteen, setFiveteen] = useState(false);
-
+const [audio, setAudio] = useState(new Audio("/audiochap1.mp3"))
 
 
 useEffect(() => {
-    
-    let timer1 = setTimeout(() => setLoading(false), 7000);
+  if (n < 2){
+      audio.play()
+  }
+
+    let timer1 = setTimeout(() => setLoading(false), 6000);
     
 
     return () => {
@@ -79,26 +74,36 @@ function useWindowSize() {
 
 
 const [height, width] = useWindowSize();
-
-
+ 
 function handleClick() {
+  
   const arrText = ["  Yeah they are gonna break the door, there must be another way out", `  Look ${boyName} there is a backpag here, we should use it`,`  Okay perfect. There is a door here ...  Ahhhahg... It's looked, we have to find the key ...`, `  It's not working ! there is no lock .... ` , `   Yeah we are in 2033, nobody use key anymore. We gotta find something else quick`, `  I think we gotta find something that can hack the door system ... `, `  Okay perfect the phone we found is working, let's try to get inside the door system `, `   ( CRIIIIICK ) Look Chad the window is broken and zombies are coming in we have to hurry ! `]
   setText(arrText[n])
   setN(n+1)
+  // if (n<1) {
+  //   
+  // }
+
   if (n === 2) {
     setPause(true)
     setBagtext('You can drag items here')
   }
   if (n ===5 && isPhoneFounded === false) {
     setPause(true);
-   // setChapterOne(true);
   }
 
-  if (n === 7) {
+  if (n == 7) {
     setPause(true);
-
-    for (let i = 0; i < 31; i++) {
-      setTimeout(() => setTime(30-i), 1000 *i)
+    //setAudio(new Audio("/timer.mp3"))
+    for (let i = 0; i < 61; i++) {
+      //   if (i == 2) {
+      //   window.location = '/chap1'
+      //   console.log('fseihfoeifho');
+      // }
+      
+      setTimeout(() => setTime(60-i), 1000 *i)
+      setTimeout(() => window.location = '/chap1', 60000)
+    
     }
   }
 
@@ -115,14 +120,17 @@ function handleOnDragEnd(result) {
   
   if (result.destination.droppableId == 'items' && result.draggableId == 'thePhone') {
     setPhoneFounded(true);
-    setPause(false)
+    if (n > 3) {
+      setPause(false)
+    }
+    
   }
   
   if (result.destination.droppableId == 'items' && result.draggableId == 'theX') {
     setText('  Thats gross! put that thing down ...');}
 }
 
-console.log(n);
+
 
 function retry() {
   setTryLeft(tryLeft-1)
@@ -216,7 +224,15 @@ function handleError9() {
   }, 1700);
 }
 
-console.log(time);
+console.log(n);
+
+// const stopIt = () =>{
+//   //const arrText = ["  Yeah they are gonna break the door, there must be another way out", `  Look ${boyName} there is a backpag here, we should use it`,`  Okay perfect. There is a door here ...  Ahhhahg... It's looked, we have to find the key ...`, `  It's not working ! there is no lock .... ` , `   Yeah we are in 2033, nobody use key anymore. We gotta find something else quick`, `  I think we gotta find something that can hack the door system ... `, `  Okay perfect the phone we found is working, let's try to get inside the door system `, `   ( CRIIIIICK ) Look Chad the window is broken and zombies are coming in we have to hurry ! `]
+//  // setText(arrText[n])
+//   audio.pause()
+//   //setN(n+1)
+//   //console.log('pute');
+// }
   return (
     <div className="App">
 
@@ -225,7 +241,8 @@ console.log(time);
           <h2>Chapter 1 : Trapped</h2>
 
           <p>
-          <TypeWriter text={'   Chad and Kate try to find a refuge. '} />
+          <TypeWriter text="   Chad and Kate try are surrounded by zombies.
+Will you find a way out ?" />
           </p>
           </div>
           <div className="container">
@@ -253,14 +270,15 @@ console.log(time);
             </h1>
             </div>
 
-            <div  className={`the-next ${isPaused? 'invisible':'visible'} `}>
+            <div  className={`the-next ${isPaused != true? 'visible':'invisible'} `}>
               <button onClick={ () => handleClick()}>
                 <img src={next} alt="next" />
               </button>
             </div>
 
+          
             <div className={`timer ${n>7? 'visible' : 'invisible'} `}>
-             <p>00:{time}</p>
+             <p>00:{ttime}</p>
           </div>           
         </div>
 

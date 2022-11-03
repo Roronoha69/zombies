@@ -37,6 +37,8 @@ function Chapter3() {
      
         audio.play();
         
+        let timer6 = setTimeout(() => audio.pause(), 25000);
+        
         return () => {
           clearTimeout(timer1);
         };
@@ -74,7 +76,11 @@ function Chapter3() {
         }
         if (n==5) {
           setPause(true)
-
+          //audio.pause()
+        }   
+        if (n==3) {
+          setPause(true)
+          audio.pause()
         }   
       }
 
@@ -87,7 +93,7 @@ function Chapter3() {
           <div className="texts">
           <h2>Final Chapter : The Experiment</h2>
           <p>
-          <TypeWriter text={'   The door does not lead to the exit but to a strange place where a mysterious man stands behind...'} />
+          <TypeWriter text={'   Chad and Kate enter the real laboratory and feel like something strange is going on ...'} />
           </p>         
           </div>
           <div className="container">

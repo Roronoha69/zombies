@@ -70,7 +70,7 @@
 			height: 100%;
 			width: 100%;
 			background: #ffffff;
-			animation: progress-animation 9s ease-in-out;
+			animation: progress-animation 6s ease-in-out;
 		}
 	}
 }
@@ -86,7 +86,15 @@
 
 
 	.wrap-text{
+		h1{
+			font-size: 20px;
+			line-height: 1.3rem;
 		
+			@media screen and (max-width: 1600px) {
+			  font-size: 15px;
+			}}
+
+
 	}
 	
 }

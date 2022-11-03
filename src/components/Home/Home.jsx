@@ -68,7 +68,7 @@ function useWindowSize() {
               animate={{opacity:1}}
               transition={{duration: 1}}
                className='expand'>
-               <h3>On this scenario game, you will need to use the click and the drag from the mouse</h3>
+               <h3>On this scenario game, you will need to use the click and the drag & drop from the mouse</h3>
                <h3>For the Chapter 3 you will need the arrow on the keyboard</h3>
               
 
